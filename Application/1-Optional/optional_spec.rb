@@ -1,4 +1,5 @@
 # optional_spec.rb
+require "./optional.rb"
 
 describe 'Optional#value' do
 

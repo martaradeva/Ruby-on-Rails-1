@@ -4,18 +4,24 @@
 class Optional < BasicObject
   instance_methods.each { |m| undef_method m unless m =~ /(^__send__$|^object_id$)/ }
 
+  attr_accessor :argument
+
   def initialize(argument)
     @argument = argument
   end
 
   def value
     @argument
-    # Proc.new { |object| object }
+    # ::Object::Proc.new { |object| object.argument }
   end
 
   def method_missing(name, *args, &block)
-    @argument.send(name, *args, &block)
-    # Object::Proc.new { |object| object.send(name, *args, &block) }
+    # puts "pass one"
+    #self
+    # @argument.send(name, *args, &block)
+    ::Object::Optional.new( @argument.send(name, *args, &block))
+    # args
+    # ::Object::Proc.new { |object| object.send(name, *args, &block) }
   end
 end
 

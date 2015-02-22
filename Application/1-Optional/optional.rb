@@ -2,9 +2,6 @@
 # Kate, I owe you a beer.
 
 class Optional < BasicObject
-  # instance_methods.each { |m| undef_method m unless m =~ /(^__send__$|^object_id$)/ }
-
-  attr_accessor :argument
 
   def initialize(argument)
     @argument = argument

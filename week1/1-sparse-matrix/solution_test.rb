@@ -63,6 +63,25 @@ class SolutionTest < Minitest::Test
     end
   end
 
+  describe "fits?" do
+    before do
+      @other = [[1,2], nil, [3,4]]
+      @source = [nil, nil, nil, [1,2], nil, [3,4]]
+      @wrong = [[1,2], nil, nil, [3,4]]
+    end
+
+    describe "when called with correct arrays" do
+      it "returns true" do
+        @source.fits?(@other).must_equal true
+      end
+    end
+
+    describe "when called with incorrect arrays" do
+      it "returns false" do
+        @source.fits?(@wrong).must_equal false
+      end
+    end
+  end
 
   # describe "compress" do
   #   before do

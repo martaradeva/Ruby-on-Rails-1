@@ -20,4 +20,19 @@ class Array
   def increment(integer)
     [nil] * integer + self
   end
+
+  def write(array)
+    if fits?(array) 
+      then each_with_index.map { |element, index| element || array[index] }
+    end
+  end
+
+  def fits?(array)
+    each_with_index { |element, index| if element and array[index] then return false end }
+    true
+  end
+
+  # def ^(other)
+  #   other ? false : true
+  # end
 end

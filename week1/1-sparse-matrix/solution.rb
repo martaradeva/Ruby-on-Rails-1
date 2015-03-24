@@ -11,38 +11,38 @@ class Array
     self[0]
   end
 
-  def format # + unit test
+  def format
     map { |row| row.serialize_elements.strip }
   end
 
-  def serialize_elements # + unit test
+  def serialize_elements
     each_with_index.map { |element, index| [index, element] if element }
   end
 
-  def strip # + unit test
+  def strip
     drop_while(&:!).reverse
       .drop_while(&:!).reverse
   end
 
-  def increment(integer) # + unit test
+  def increment(integer)
     [nil] * integer + self
   end
 
   def increment_check_and_write(other)
     each do
-      other = other.increment(1)
       return write(other) if self.fits?(other)
+      other = other.increment(1)
     end
     self + other.strip
   end
 
-  def write(second) # + unit test
+  def write(second)
     inflate(second)
       .zip(second)
       .each.map { |a, b| a || b }
   end
 
-  def inflate(second) # + unit test
+  def inflate(second)
     if length < second.length
       integer = second.length - length
       reverse.increment(integer).reverse
@@ -50,7 +50,7 @@ class Array
     end
   end
 
-  def fits?(other) # + unit test
+  def fits?(other)
     each_with_index { |element, index| return false if element && other[index] }
     true
   end

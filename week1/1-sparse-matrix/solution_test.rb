@@ -135,17 +135,17 @@ class SolutionTest < Minitest::Test
     end
   end
 
-  # describe "increment_check_and_write" do
-  #   before do
-  #     @first = [[0,0], nil, nil, [1,2], nil, [3,4]]
-  #     @second = [[1,2], nil, [3,4]]
-  #     @outcome = [[0,0], nil, [1,2], [1,2], [3,4], [3,4]]
-  #   end
+  describe "increment_check_and_write" do
+    before do
+      @first = [[0,0], nil, nil, [1,2], nil, [3,4]]
+      @second = [[1,2], nil, [3,4]]
+      @outcome = [[0,0], nil, [1,2], [1,2], [3,4], [3,4]]
+    end
 
-  #   describe "it increments, checks and writes" do
-  #     it "correctly" do
-  #       @first.increment_check_and_write(@second).must_equal @outcome
-  #     end
-  #   end
-  # end
+    describe "it increments, checks and writes" do
+      it "correctly" do
+        @first.increment_check_and_write(@second).must_equal @outcome
+      end
+    end
+  end
 end

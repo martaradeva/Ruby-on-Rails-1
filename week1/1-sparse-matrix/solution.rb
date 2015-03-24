@@ -42,8 +42,8 @@ class Array
   end
 
   def increment_check_and_write(other)
-    self.each_with_index do |element, index|
-      other.increment(index)
+    self.each do |element|
+      other = other.increment(1)
       if self.fits?(other)
       then return write(other)
       end
@@ -57,7 +57,7 @@ class Array
         .each.map { |a, b| a || b }
   end
 
-  def inflate(second)
+  def inflate(second) # + unit test
     if self.length < second.length
     then
       integer = second.length - self.length

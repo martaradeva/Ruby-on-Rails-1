@@ -5,23 +5,6 @@ require_relative 'solution'
 
 class SolutionTest < Minitest::Test
 
-  # describe "apply_by_rows" do
-  #   before do
-  #     @source = [[1, nil, nil, nil],
-  #                [nil, 2, 5, nil],
-  #                [6, nil, nil, 7],
-  #                [nil, 3, nil, 4]]
-
-  #     @outcome = [1, 7, 13, 7]
-  #   end
-
-  #   describe "when called" do
-  #     it "returns correct compressed value" do
-  #       @source.apply_by_rows{reduce(:+)}.must_equal @outcome
-  #     end
-  #   end
-  # end
-
   describe "serialize_elements" do
     before do
       @source = [1, nil, nil, nil]
@@ -82,6 +65,28 @@ class SolutionTest < Minitest::Test
       end
     end
   end
+
+  describe "write" do
+    before do
+      @second = [[1,2], nil, [3,4]]
+      @first = [nil, nil, nil, [1,2], nil, [3,4]]
+      @outcome = [[1,2], nil, [3,4], [1,2], nil, [3,4]]
+      @wrong = [[1,2], nil, nil, [3,4]]
+    end
+
+    describe "when called with correct arrays" do
+      it "writes second into first" do
+        @first.write(@second).must_equal @outcome
+      end
+    end
+
+    describe "when called with incorrect arrays" do
+      it "returns false" do
+        @first.write(@wrong).must_equal false
+      end
+    end
+  end
+
 
   # describe "compress" do
   #   before do

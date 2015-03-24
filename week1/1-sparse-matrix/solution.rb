@@ -1,27 +1,15 @@
 class Array
 
-# First, take each row of the matrix, flatten each element and strip it from starting/ending nils
-# Then, until the matrix-length is 1, we put the 2nd element in the first
-# put - for each available slot in the matrix check if our element fits - if so, we write it down. 
-
   def compress
     format.ouroboros
   end
-
-  # def compress # + unit test
-  #   new_array = format
-  #   while new_array.length > 1 do
-  #     new_array[0] = new_array[0].increment_check_and_write(new_array[1])
-  #     new_array.delete_at(1)
-  #   end
-  # end
 
   def ouroboros
     while length > 1 do
       self[0] = self[0].increment_check_and_write(self[1])
       self.delete_at(1)
     end
-    self
+    self[0]
   end
 
   def format # + unit test

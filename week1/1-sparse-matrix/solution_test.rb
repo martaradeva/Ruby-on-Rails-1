@@ -49,6 +49,21 @@ class SolutionTest < Minitest::Test
     end
   end
 
+  describe "increment" do
+    before do
+      @source = [[1,2], nil, [3,4]]
+      @multiplier = 3
+      @outcome = [nil, nil, nil, [1,2], nil, [3,4]]
+    end
+
+    describe "when called" do
+      it "returns correct stripped array" do
+        @source.increment(@multiplier).must_equal @outcome
+      end
+    end
+  end
+
+
   # describe "compress" do
   #   before do
   #     @source = [[1, nil, nil, nil],

@@ -16,4 +16,8 @@ class Array
      drop_while{ |elem| !elem }.reverse
     .drop_while{ |elem| !elem }.reverse
   end
+
+  def increment(integer)
+    [nil] * integer + self
+  end
 end

@@ -71,7 +71,6 @@ class SolutionTest < Minitest::Test
       @second = [[1,2], nil, [3,4]]
       @first = [nil, nil, nil, [1,2], nil, [3,4]]
       @outcome = [[1,2], nil, [3,4], [1,2], nil, [3,4]]
-      @wrong = [[1,2], nil, nil, [3,4]]
     end
 
     describe "when called with correct arrays" do
@@ -80,13 +79,26 @@ class SolutionTest < Minitest::Test
       end
     end
 
-    describe "when called with incorrect arrays" do
-      it "returns false" do
-        @first.write(@wrong).must_equal false
+    describe "when called with a shorter first array" do
+      it "is reversible" do
+        @second.write(@first).must_equal @outcome
       end
     end
   end
 
+  describe "inflate" do
+    before do
+      @second = [[1,2], nil, [3,4]]
+      @first = [nil, nil, nil, [1,2], nil, [3,4]]
+      @outcome = [[1,2], nil, [3,4], nil, nil, nil]
+    end
+
+    describe "it works" do
+      it "inflates shorter array" do
+        @second.inflate(@first).must_equal @outcome
+      end
+    end
+  end
 
   # describe "compress" do
   #   before do
@@ -123,4 +135,17 @@ class SolutionTest < Minitest::Test
     end
   end
 
+  # describe "increment_check_and_write" do
+  #   before do
+  #     @first = [[0,0], nil, nil, [1,2], nil, [3,4]]
+  #     @second = [[1,2], nil, [3,4]]
+  #     @outcome = [[0,0], nil, [1,2], [1,2], [3,4], [3,4]]
+  #   end
+
+  #   describe "it increments, checks and writes" do
+  #     it "correctly" do
+  #       @first.increment_check_and_write(@second).must_equal @outcome
+  #     end
+  #   end
+  # end
 end

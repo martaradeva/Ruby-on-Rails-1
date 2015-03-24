@@ -104,7 +104,7 @@ class SolutionTest < Minitest::Test
   #   end
   # end
 
-  describe "compress-in-progress" do
+  describe "format" do
     before do
       @source = [[1, nil, nil, nil],
                  [nil, 2, 5, nil],
@@ -117,8 +117,8 @@ class SolutionTest < Minitest::Test
     end
 
     describe "when called with sample area" do
-      it "returns correct compressed value" do
-        @source.compress.must_equal @outcome
+      it "returns correctly formatted value" do
+        @source.format.must_equal @outcome
       end
     end
   end

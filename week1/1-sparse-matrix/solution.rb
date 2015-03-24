@@ -4,7 +4,11 @@ class Array
 # Then, until the matrix-length is 1, we put the 2nd element in the first
 # put - for each available slot in the matrix check if our element fits - if so, we write it down. 
 
-  def compress # + unit test
+  # def compress # + unit test
+  #   new_array =map { |row| row.serialize_elements.strip }
+  # end
+
+  def format # + unit test
     map { |row| row.serialize_elements.strip }
   end
 

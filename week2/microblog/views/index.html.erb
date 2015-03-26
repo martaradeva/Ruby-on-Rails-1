@@ -10,6 +10,11 @@
     </div>
   </div>
   <div class="page-content">
-    Index here.
+    <% @posts.each do |id, post| %>
+      <h1><%= post.title %></h1>
+      <div class="description">
+        <%= post.content %>
+      </div>
+    <% end %>
   </div>
 </body>

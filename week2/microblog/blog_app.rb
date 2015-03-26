@@ -3,6 +3,7 @@
 # encoding: utf-8
 require 'rubygems'
 require 'bundler/setup'
+require './post.rb'
 Bundler.require(:default)
 
 # TODO:
@@ -19,7 +20,7 @@ Bundler.require(:default)
 class BlogApp < Sinatra::Application
 
   before do
-    @posts = []
+    @posts = {} # id => post
     content_type :html
   # @ideas = Idea.all
   # @header = File.read('./views/header.html')
@@ -32,11 +33,15 @@ class BlogApp < Sinatra::Application
   end
 
   get '/new' do
+    # @post = Post.new
     erb :"new.html"
   end
 
   post '/new' do
-    # redirect to show id
+    post = Post.new(params[:title], params[:content])
+    post_id = @posts.keys.last.to_i + 1.to_sym
+    @posts[post_id] = post
+    redirect to("/#{post_id}")
   end
 
   get '/:id' do
@@ -48,4 +53,6 @@ class BlogApp < Sinatra::Application
     # write down and redirect to index
     # if id is bad -> render with warning "bad id"
   end
+
 end
+

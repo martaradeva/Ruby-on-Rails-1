@@ -32,3 +32,5 @@ config/secrets.yml
 *.bowerrc
 bower.json
 .ruby-version
+
+./week2/microblog/example.rb

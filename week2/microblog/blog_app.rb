@@ -19,64 +19,33 @@ Bundler.require(:default)
 class BlogApp < Sinatra::Application
 
   before do
-  content_type :html
-  @ideas = Idea.all
-  @header = File.read('./views/header.html')
-  @idea = Idea.new
-  @date_format = "%m/%d/%Y at %I:%M"
+    @posts = []
+    content_type :html
+  # @ideas = Idea.all
+  # @header = File.read('./views/header.html')
+  # @idea = Idea.new
+  # @date_format = "%m/%d/%Y at %I:%M"
   end
 
   get '/' do
     erb :"index.html"
   end
 
-  get '/upload' do
-    erb :"upload.html"
+  get '/new' do
+    erb :"new.html"
   end
 
-  post '/upload.html' do
-    @idea = Idea.create(
-      # :image_url   => params[] -- FILE UPLOAD LATER
-      :title       => params["title"],
-      :description => params["description"],
-      :author      => params["author"],
-      :created_at  => Time.now
-    )
-    redirect to('/success.html')
+  post '/new' do
+    # redirect to show id
   end
 
-  get '/idea/:id/edit.html' do
-    @idea = Idea.get(params[:id])
-    erb :"edit.html"
+  get '/:id' do
+    # find by id
+    erb :"show.html" # or 404 if id not present
   end
 
-  post '/idea/:id/edit.html' do
-    @idea = Idea.get(params[:id])
-    @idea.update(
-      # :image_url   => params[] -- FILE UPLOAD LATER
-      :title       => params["title"],
-      :description => params["description"],
-      :author      => params["author"],
-      :created_at  => Time.now
-    )
-    @idea.save
-    redirect to('/success.html')
-  end
-
-  get '/idea/:id/delete.html' do
-    @idea=Idea.get(params[:id])
-    @idea.destroy
-    redirect to('/success.html')
-  end
-
-  get '/idea/:id.html' do
-    @idea = Idea.get(params[:id])
-    erb :"idea_view.html"
-  end
-  # static pages at end
-
-  get '/:static_page.html' do
-    url="#{params[:static_page]}.html".to_sym
-    erb url
+  post '/:id' do
+    # write down and redirect to index
+    # if id is bad -> render with warning "bad id"
   end
 end

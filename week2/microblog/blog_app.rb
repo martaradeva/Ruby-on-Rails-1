@@ -33,7 +33,6 @@ class BlogApp < Sinatra::Application
   end
 
   get '/new' do
-    # @post = Post.new
     erb :"new.html"
   end
 
@@ -44,15 +43,15 @@ class BlogApp < Sinatra::Application
     redirect to("/#{post_id}")
   end
 
-  get '/:id' do
-    # find by id
-    erb :"show.html" # or 404 if id not present
-  end
+  # get '/:id' do
+  #   # find by id
+  #   erb :"show.html" # or 404 if id not present
+  # end
 
-  post '/:id' do
-    # write down and redirect to index
-    # if id is bad -> render with warning "bad id"
-  end
+  # post '/:id' do
+  #   # write down and redirect to index
+  #   # if id is bad -> render with warning "bad id"
+  # end
 
 end
 

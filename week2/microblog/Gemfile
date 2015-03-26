@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+ruby "2.2.1"
+gem 'sinatra'
+gem 'sinatra-base'
+gem 'data_mapper'
+gem 'erubis'
+
+gem 'sinatra-reloader', group: :development

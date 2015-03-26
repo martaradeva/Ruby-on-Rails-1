@@ -10,10 +10,17 @@
     </div>
   </div>
   <div class="page-content">
-    <% @posts.each do |id, post| %>
-      <h1><%= post.title %></h1>
+    <% if !@posts.empty? %>
+    <% then %>
+      <% @posts.each do |id, post| %>
+        <h1><%= post.title %></h1>
+        <div class="description">
+          <%= post.content %>
+        </div>
+      <% end %>
+    <% else %>
       <div class="description">
-        <%= post.content %>
+        No posts here yet!
       </div>
     <% end %>
   </div>

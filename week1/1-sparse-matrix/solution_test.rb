@@ -123,7 +123,7 @@ class SolutionTest < Minitest::Test
       @outcome = [[[0, 1]],
                   [[1, 2], [2, 5]],
                   [[0, 6], nil, nil, [3, 7]],
-                  [[1, 3], nil, [3, 4]]]
+                   [[1, 3], nil, [3, 4]]]
     end
 
     describe 'when called with sample area' do

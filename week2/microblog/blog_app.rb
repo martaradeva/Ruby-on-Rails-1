@@ -7,15 +7,15 @@ require './post.rb'
 Bundler.require(:default)
 
 # TODO:
-# get '/' - Display a view of all posts.
-# get '/new' - Displays a view for creating a new post.
-# post '/new' - Creates a new post.
-# get '/42' - Displays a view of the post with id equal to 42.
-# delete '/42' - Deletes the post with id equal to 42.
+# - get '/' - Display a view of all posts.
+# + get '/new' - Displays a view for creating a new post.
+# - post '/new' - Creates a new post.
+# - get '/42' - Displays a view of the post with id equal to 42.
+# - delete '/42' - Deletes the post with id equal to 42.
 
-# 404
-# Empty index page
-# Blog post validation length
+# - 404
+# - Empty index page
+# - Blog post validation length
 
 class BlogApp < Sinatra::Application
 
@@ -37,21 +37,29 @@ class BlogApp < Sinatra::Application
   end
 
   post '/new' do
-    post = Post.new(params[:title], params[:content])
-    post_id = @posts.keys.last.to_i + 1.to_sym
-    @posts[post_id] = post
+    # post = Post.new(params[:title], params[:content])
+    # post_id = @posts.keys.last.to_i + 1.to_sym
+    # @posts[post_id] = post
+    params.inspect
     redirect to("/#{post_id}")
   end
 
-  # get '/:id' do
-  #   # find by id
-  #   erb :"show.html" # or 404 if id not present
-  # end
+  get '/404' do
+    erb :"404.html" 
+  end
 
-  # post '/:id' do
-  #   # write down and redirect to index
-  #   # if id is bad -> render with warning "bad id"
-  # end
+  get '/:id' do
+    @post = @posts[:id] # find by id
+    if @post 
+    then erb :"show.html" 
+    else redirect to("/404") # or 404 if id not present
+    end
+  end
+
+  post '/:id' do
+    # write down and redirect to index
+    # if id is bad -> render with warning "bad id"
+  end
 
 end
 

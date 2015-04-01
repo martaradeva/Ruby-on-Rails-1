@@ -1,9 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-
     addressable (2.3.7)
-    backports (3.6.4)
+    ast (2.0.0)
+    astrolabe (1.3.0)
+      parser (>= 2.2.0.pre.3, < 3.0)
     bcrypt (3.1.10-x86-mingw32)
     bcrypt-ruby (3.1.5-x86-mingw32)
       bcrypt (>= 3.1.3)
@@ -49,31 +50,32 @@ GEM
     fastercsv (1.5.5)
     json (1.8.2)
     json_pure (1.8.2)
+    minitest (5.5.1)
     multi_json (1.11.0)
+    parser (2.2.0.3)
+      ast (>= 1.1, < 3.0)
+    powerpack (0.1.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
-    rack-test (0.6.3)
-      rack (>= 1.0)
-
+    rainbow (2.0.0)
+    rake (10.4.2)
+    rubocop (0.29.1)
+      astrolabe (~> 1.3)
+      parser (>= 2.2.0.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.4)
+    ruby-progressbar (1.7.5)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
-
     sinatra-base (1.4.0)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-contrib (1.4.2)
-      backports (>= 2.0)
-      multi_json
-      rack-protection
-      rack-test
-      sinatra (~> 1.4.0)
-      tilt (~> 1.3)
-    sinatra-reloader (1.0)
-      sinatra-contrib
+    sqlite3 (1.3.10-x86-mingw32)
     stringex (1.5.1)
     tilt (1.4.1)
     uuidtools (2.1.5)
@@ -84,6 +86,10 @@ PLATFORMS
 DEPENDENCIES
   data_mapper
   erubis
+  minitest
+  rack
+  rake
+  rubocop
   sinatra
   sinatra-base
-  sinatra-reloader
+  sqlite3

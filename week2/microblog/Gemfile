@@ -10,5 +10,4 @@ gem 'minitest'
 gem 'rubocop'
 
 gem 'rack'
-gem 'sinatra'
 gem 'sqlite3'

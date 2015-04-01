@@ -5,4 +5,10 @@ gem 'sinatra-base'
 gem 'data_mapper'
 gem 'erubis'
 
-gem 'sinatra-reloader', group: :development
+gem 'rake'
+gem 'minitest'
+gem 'rubocop'
+
+gem 'rack'
+gem 'sinatra'
+gem 'sqlite3'

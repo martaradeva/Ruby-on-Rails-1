@@ -10,9 +10,9 @@
     </div>
   </div>
   <div class="page-content">
-    <% if !@posts.empty? %>
+    <% if !locals[:posts].empty? %>
     <% then %>
-      <% @posts.each do |id, post| %>
+      <% @posts.each_value do |post| %>
         <h1><%= post.title %></h1>
         <div class="description">
           <%= post.content %>

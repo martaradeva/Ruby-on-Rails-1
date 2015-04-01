@@ -13,14 +13,15 @@ Bundler.require(:default)
 # - get '/42' - Displays a view of the post with id equal to 42.
 # - delete '/42' - Deletes the post with id equal to 42.
 
-# - 404
-# - Empty index page
+# + 404
+# + Empty index page
 # - Blog post validation length
 
 class BlogApp < Sinatra::Application
 
+  @@posts = {}
+
   before do
-    @posts = {} # id => post
     content_type :html
   # @ideas = Idea.all
   # @header = File.read('./views/header.html')
@@ -29,7 +30,7 @@ class BlogApp < Sinatra::Application
   end
 
   get '/' do
-    erb :"index.html"
+    erb :"index.html", locals: { posts: @@posts }
   end
 
   get '/new' do
@@ -37,11 +38,13 @@ class BlogApp < Sinatra::Application
   end
 
   post '/new' do
-    # post = Post.new(params[:title], params[:content])
-    # post_id = @posts.keys.last.to_i + 1.to_sym
-    # @posts[post_id] = post
-    params.inspect
-    redirect to("/#{post_id}")
+    post = Post.new(params["title"], params["content"])
+    @@posts.empty? ? post_id = 0 : post_id = @@posts.keys.last + 1
+    # tova vse oshte gyrmi :(
+    # post_id = @@posts.keys.last + 1 || 0
+    @@posts[post_id] = post
+    # p @@posts
+    redirect to("/")
   end
 
   get '/404' do
@@ -49,16 +52,16 @@ class BlogApp < Sinatra::Application
   end
 
   get '/:id' do
-    @post = @posts[:id] # find by id
+    @post = @@posts[:id] # find by id
     if @post 
-    then erb :"show.html" 
+    then erb :"show.html"
     else redirect to("/404") # or 404 if id not present
     end
   end
 
-  post '/:id' do
-    # write down and redirect to index
-    # if id is bad -> render with warning "bad id"
+  delete '/:id' do
+    @@posts.delete(:id)
+    redirect to("/")
   end
 
 end

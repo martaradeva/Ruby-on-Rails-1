@@ -13,6 +13,10 @@ pickle-email-*.html
 
 Applicaiton/1-Optional/rbfs_spec.rb
 
+/week3/1-microblog/microblog/config/database.yml
+/week3/1-microblog/microblog/.gitignore
+
+
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/secrets.yml

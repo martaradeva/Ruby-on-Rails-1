@@ -1,3 +1,8 @@
+App starts with 
+
+``` rackup 
+
+
 Hi guys,
 
 The time has come for you to make your first web application for the course. For this task you will be using Sinatra to build a microblogging application.

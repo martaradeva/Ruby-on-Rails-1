@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  posts:
+    page_title: "Posts"
+  comments:
+    page_title: "Comments"
+  tags:
+    page_title: "Tags"
+

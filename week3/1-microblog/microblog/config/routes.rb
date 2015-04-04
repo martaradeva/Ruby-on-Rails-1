@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :tags
+  resources :users
+  resources :comments
+  resources :posts
   resources :posts
   resources :comments
   root to: 'posts#index'

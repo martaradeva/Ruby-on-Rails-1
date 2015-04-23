@@ -2,17 +2,20 @@ class BrandsController < ApplicationController
   # before_filter :set_brand, only: [:show, :create, :update, :delete]
 
   def index
-    @brands = Brands.all
+    set_brands
+    render_json(params[:count] ? @brands.count || @brands)
   end
 
   def show
     set_brand
+    render_json(@brand)
   end
 
   def new
   end
 
   def create
+    redirect_to :index
   end
 
   def edit
@@ -21,20 +24,35 @@ class BrandsController < ApplicationController
 
   def update
     set_brand
+    redirect_to :index
   end
 
   def destroy
     set_brand
+    redirect_to :index
   end
 
   def count
-  end
-
-  def count
+    set_brands
+    render_json(@brands.count)
   end
 
   private
   def set_brand
     @brand = Brands.find_by id: params[:id]
   end
+
+  def set_brands
+    if params[:index] then
+      @brands = Brands.where("id > params[:index]")
+    else
+      @brands = Brands.all
+    end
+  end
+
+  def render_json(variable)
+    respond_to do |format|
+      format.json { render json: variable }
+  end
+
 end

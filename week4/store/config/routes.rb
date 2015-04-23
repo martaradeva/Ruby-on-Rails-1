@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :brands, only: [:index, :show, :create, :update, :destroy]
   get '/brands/count', to: 'brands#count'
+  resources :brands, only: [:index, :show, :create, :update, :destroy]
   get '/brands/range/:index/:count', to: 'brands#index'
   get '/brands/range/:index', to: 'brands#index'
 

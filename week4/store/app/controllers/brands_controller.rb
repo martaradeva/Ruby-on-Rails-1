@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
 
   def index
     set_brands
-    render_json(params[:count] ? @brands.count || @brands)
+    render_json(params[:count] ? @brands.count : @brands)
   end
 
   def show
@@ -44,10 +44,17 @@ class BrandsController < ApplicationController
 
   def set_brands
     if params[:index] then
-      @brands = Brands.where("id > params[:index]")
+      @brands = Brand.where("id > params[:index]")
     else
-      @brands = Brands.all
+      @brands = Brand.all
     end
+  end
+
+  def render_json(variable)
+    render json: variable.to_json
+    # respond_to do |format|
+    #   format.json { render json: variable.to_json }
+    # end
   end
 
 end

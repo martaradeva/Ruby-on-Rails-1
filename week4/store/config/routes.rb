@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   # same for categories
   # same for products
 
-  get '/search/:type/:property/:slug', to: 'search#search'
-  get '/search/:type/:slug', to: 'search#search'
+  get '/search/:type_property_slug', to: 'search#search'
 
   root 'brands#index'
 end

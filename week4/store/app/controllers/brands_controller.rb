@@ -1,5 +1,4 @@
 class BrandsController < ApplicationController
-  # before_filter :set_brand, only: [:show, :create, :update, :delete]
   protect_from_forgery with: :null_session
 
   def index

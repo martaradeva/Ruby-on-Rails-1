@@ -47,3 +47,10 @@ bower.json
 /week4/store/.gitignore
 /week4/store/config/secrets.yml
 /week4/store/todo.txt
+
+# ignore app specific data for week 5
+/week5/management/config/database.yml
+/week5/management/.gitignore
+/week5/management/config/secrets.yml
+/week5/management/todo.txt
+

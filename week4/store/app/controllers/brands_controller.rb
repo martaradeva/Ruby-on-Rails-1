@@ -39,12 +39,12 @@ class BrandsController < ApplicationController
 
   private
   def set_brand
-    @brand = Brands.find_by id: params[:id]
+    @brand = Brand.find_by id: params[:id]
   end
 
   def set_brands
     if params[:index] then
-      @brands = Brand.where("id > params[:index]")
+      @brands = Brand.where("id >= #{params[:index]}")
     else
       @brands = Brand.all
     end

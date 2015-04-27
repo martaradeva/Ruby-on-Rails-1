@@ -1,5 +1,6 @@
 class BrandsController < ApplicationController
   # before_filter :set_brand, only: [:show, :create, :update, :delete]
+  protect_from_forgery with: :null_session
 
   def index
     set_brands
@@ -15,7 +16,9 @@ class BrandsController < ApplicationController
   end
 
   def create
-    redirect_to :index
+    @brand = Brand.new(name: params[:name], description: params[:description])
+    @brand.save!
+    redirect_to action: "index"
   end
 
   def edit
@@ -24,12 +27,12 @@ class BrandsController < ApplicationController
 
   def update
     set_brand
-    redirect_to :index
+    @brand.update_attributes(name: params[:name], description: params[:description])
   end
 
   def destroy
     set_brand
-    redirect_to :index
+    @brand.destroy
   end
 
   def count
@@ -48,13 +51,6 @@ class BrandsController < ApplicationController
     else
       @brands = Brand.all
     end
-  end
-
-  def render_json(variable)
-    render json: variable.to_json
-    # respond_to do |format|
-    #   format.json { render json: variable.to_json }
-    # end
   end
 
 end

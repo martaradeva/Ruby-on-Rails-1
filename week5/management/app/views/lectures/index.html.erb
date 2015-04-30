@@ -2,4 +2,25 @@
 <% content_for :description do %>Index page of all lectures.<% end %>
 
 <h1>Lectures</h1>
-<p>Find me in app/views/lectures/index.html.erb</p>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Body</td>
+    <td>Created at</td>
+    <td>Last modified</td>
+    <td>Actions</td>
+  </tr>
+<% @lectures.each do |l| %>
+  <tr>
+    <td>l.name</td>
+    <td>l.body</td>
+    <td>l.created_at</td>
+    <td>l.updated_at</td>
+    <td> 
+      <%= link_to "Show", lecture_path(l) %>
+      <%= link_to "Edit", edit_lecture_path(l) %>
+      <%= link_to "Destroy", lecture_path(l) %>
+    </td>
+  </tr>
+<% end %>
+</table>

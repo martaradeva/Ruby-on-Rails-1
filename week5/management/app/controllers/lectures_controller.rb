@@ -36,6 +36,6 @@ private
   end
 
   def set_lecture
-    @lecture = Lecture.find(params[id])
+    @lecture = Lecture.find(params['id'])
   end
 end

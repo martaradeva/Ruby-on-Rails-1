@@ -36,6 +36,6 @@ private
   end
 
   def set_task
-    @task = Task.find(params[id])
+    @task = Task.find(params['id'])
   end
 end

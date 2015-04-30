@@ -36,6 +36,6 @@ private
   end
 
   def set_solution
-    @solution = Solution.find(params[id])
+    @solution = Solution.find(params['id'])
   end
 end

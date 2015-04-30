@@ -24,9 +24,10 @@ class LecturesController < ApplicationController
     @lecture.update!
   end
 
-  def delete
+  def destroy
     set_lecture
     @lecture.destroy
+    redirect_to lectures_url
   end
 
 private

@@ -24,7 +24,7 @@ class SolutionsController < ApplicationController
     @solution.update!
   end
 
-  def delete
+  def destroy
     set_solution
     @solution.destroy
   end

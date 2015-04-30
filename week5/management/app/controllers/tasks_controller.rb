@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     @task.update!
   end
 
-  def delete
+  def destroy
     set_task
     @task.destroy
   end

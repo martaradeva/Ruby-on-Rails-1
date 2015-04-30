@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       resources :solutions
     end
   end
+  root to: 'lectures#index'
 end

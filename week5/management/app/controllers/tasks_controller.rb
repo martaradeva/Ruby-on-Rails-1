@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   end
 
   def new
+    @task = Task.new
+    @task.lecture = Lecture.find(params[:lecture_id])
   end
 
   def show
@@ -15,18 +17,22 @@ class TasksController < ApplicationController
   end
 
   def create
-    set_task
-    @task.save!
+    # create_task_from_params
+    # @task.save!
+    @task = set_task_from_params
+    redirect_to lecture_task_url(@task.lecture, @task)
   end
 
   def update
     set_task
-    @task.update!
+    @task.update!(permitted_params)
+    redirect_to lecture_task_url(@task.lecture, @task)
   end
 
   def destroy
     set_task
     @task.destroy
+    redirect_to tasks_url
   end
 
 private
@@ -36,6 +42,26 @@ private
   end
 
   def set_task
-    @task = Task.find(params['id'])
+    @task = Task.find_by(id: params['id'])
   end
+
+  def permitted_params
+    params.permit(:lecture_id, :task => [:name, :description])
+  end
+
+  def set_task_from_params
+    task_params = {
+      name: params[:task][:name],
+      description: params[:task][:description],
+      lecture_id: params[:lecture_id]
+    }
+    Task.create!(task_params)
+  end
+
+  # def create_task_from_params
+  #   @task = set_task || Task.new
+  #   @task.name = params["task"]['name']
+  #   @task.description = params["task"]['description']
+  #   @task
+  # end
 end

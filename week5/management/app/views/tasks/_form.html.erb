@@ -1,4 +1,4 @@
-<%= simple_form_for [@task.lecture, @task] do |f| %>
+<%= simple_form_for [@task.lecture, @task], :html=> { class: 'center-form' } do |f| %>
   <%= f.input :name, label: 'Name of task', input_html: {value: @task.name || ''} %>
   <%= f.input :description, as: :text, label: 'What is this task about?', input_html: {value: @task.description || ''} %>
   <%= f.button :submit %>

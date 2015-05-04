@@ -1,6 +1,6 @@
 <h1><%= @lecture.name %></h1>
 <p><%= @lecture.body %></p>
 <ul><% @lecture.tasks.each do |t| %>
-  <li><%= link_to t.name, lecture_task_path(t.lecture, t) %></li>
+  <li><%= render 'tasks/item', :locals => {:task => t} %></li>
   <% end %>
 </ul>

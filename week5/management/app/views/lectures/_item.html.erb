@@ -1,0 +1,10 @@
+<% l = locals[:lecture] %>
+  <div>
+    <div><%= l.name %></div>
+    <div><%= l.body %></div>
+    <div><%= l.created_at %></div>
+    <div><%= l.updated_at %></div>
+    <div>
+      <%= render 'lectures/actions', :locals => {:lecture => l} %>
+    </div>
+  </div>

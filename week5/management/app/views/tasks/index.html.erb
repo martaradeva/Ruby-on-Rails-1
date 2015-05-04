@@ -1,5 +1,5 @@
-<% content_for :title do %>All tasks for lecture <%= params[lecture_id] %><%= @task.lecture_name %><% end %>
-<% content_for :description do %>Index page of all tasks for lecture <%= @task.lecture_name %>.<% end %>
+<% content_for :title do %>All tasks for lecture <%= params["lecture_id"] %><% end %>
+<% content_for :description do %>Index page of all tasks for lecture <%= params["lecture_id"] %>.<% end %>
 
 <h1>Tasks</h1>
 <table>
@@ -17,9 +17,9 @@
     <td><%= t.created_at %></td>
     <td><%= t.updated_at %></td>
     <td> 
-      <%= link_to "Show", task_path(t) %>
-      <%= link_to "Edit", edit_task_path(t) %>
-      <%= button_to "Delete", t, method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "Show", lecture_task_path(t.lecture, t) %>
+      <%= link_to "Edit", edit_lecture_task_path(t.lecture, t) %>
+      <%= button_to "Delete", [t.lecture, t], method: :delete, data: {confirm: "Are you sure?"} %>
     </td>
   </tr>
 <% end %>

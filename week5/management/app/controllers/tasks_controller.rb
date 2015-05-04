@@ -17,28 +17,26 @@ class TasksController < ApplicationController
   end
 
   def create
-    # create_task_from_params
-    # @task.save!
     @task = set_task_from_params
     redirect_to lecture_task_url(@task.lecture, @task)
   end
 
   def update
     set_task
-    @task.update!(permitted_params)
+    @task.update!(task_params)
     redirect_to lecture_task_url(@task.lecture, @task)
   end
 
   def destroy
     set_task
     @task.destroy
-    redirect_to tasks_url
+    redirect_to lecture_tasks_url(@task.lecture)
   end
 
-private
+  private
 
   def set_tasks
-    @tasks = Task.all
+    @tasks = Task.where(lecture_id: params['lecture_id']).all
   end
 
   def set_task
@@ -50,18 +48,15 @@ private
   end
 
   def set_task_from_params
-    task_params = {
-      name: params[:task][:name],
-      description: params[:task][:description],
-      lecture_id: params[:lecture_id]
-    }
     Task.create!(task_params)
   end
 
-  # def create_task_from_params
-  #   @task = set_task || Task.new
-  #   @task.name = params["task"]['name']
-  #   @task.description = params["task"]['description']
-  #   @task
-  # end
+  def task_params
+    {
+      name:        params[:task][:name],
+      description: params[:task][:description],
+      lecture_id:  params[:lecture_id]
+    }
+  end
+
 end

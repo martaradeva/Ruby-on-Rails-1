@@ -1,0 +1,4 @@
+<% s = locals[:solution] %>
+<%= link_to "Show", lecture_task_solution_path(s.task.lecture, s.task, s) %>
+<%= link_to "Edit", edit_lecture_task_solution_path(s.task.lecture, s.task, s) %>
+<%= button_to "Delete", [s.task.lecture, s.task, s], method: :delete, data: {confirm: "Are you sure?"} %>

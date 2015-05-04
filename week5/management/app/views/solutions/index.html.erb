@@ -6,23 +6,6 @@
 <% end %>
 
 <h1>Solutions</h1>
-<table>
-  <tr>
-    <td>Content</td>
-    <td>Created at</td>
-    <td>Last modified</td>
-    <td>Actions</td>
-  </tr>
-<% @solutions.each do |s| %>
-  <tr>
-    <td><%= s.content %></td>
-    <td><%= s.created_at %></td>
-    <td><%= s.updated_at %></td>
-    <td> 
-      <%= link_to "Show", lecture_task_solution_path(s.task.lecture, s.task, s) %>
-      <%= link_to "Edit", edit_lecture_task_solution_path(s.task.lecture, s.task, s) %>
-      <%= button_to "Delete", [s.task.lecture, s.task, s], method: :delete, data: {confirm: "Are you sure?"} %>
-    </td>
-  </tr>
-<% end %>
-</table>
+  <% @solutions.each do |s| %>
+    <%= render 'item', :locals => {:solution => s} %>
+  <% end %>

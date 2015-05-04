@@ -1,0 +1,7 @@
+<% s = locals[:solution] %>
+  <div>
+    <div><%= s.content %></div>
+    <div><%= s.created_at %></div>
+    <div><%= s.updated_at %></div>
+    <div><%= render 'actions', :locals => {:solution => s} %></div>
+  </div>

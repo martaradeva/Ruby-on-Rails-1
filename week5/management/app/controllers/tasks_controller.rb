@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = set_task_from_params
+    @task = Task.create!(task_params)
     redirect_to lecture_task_url(@task.lecture, @task)
   end
 
@@ -47,9 +47,9 @@ class TasksController < ApplicationController
     params.permit(:lecture_id, :task => [:name, :description])
   end
 
-  def set_task_from_params
-    Task.create!(task_params)
-  end
+  # def set_task_from_params
+  #   Task.create!(task_params)
+  # end
 
   def task_params
     {

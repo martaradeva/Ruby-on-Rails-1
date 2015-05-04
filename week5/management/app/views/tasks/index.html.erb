@@ -1,2 +1,26 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<% content_for :title do %>All tasks for lecture <%= params[lecture_id] %><%= @task.lecture_name %><% end %>
+<% content_for :description do %>Index page of all tasks for lecture <%= @task.lecture_name %>.<% end %>
+
+<h1>Tasks</h1>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Created at</td>
+    <td>Last modified</td>
+    <td>Actions</td>
+  </tr>
+<% @lectures.each do |l| %>
+  <tr>
+    <td><%= l.name %></td>
+    <td><%= l.body %></td>
+    <td><%= l.created_at %></td>
+    <td><%= l.updated_at %></td>
+    <td> 
+      <%= link_to "Show", lecture_path(l) %>
+      <%= link_to "Edit", edit_lecture_path(l) %>
+      <%= button_to "Delete", l, method: :delete, data: {confirm: "Are you sure?"} %>
+    </td>
+  </tr>
+<% end %>
+</table>

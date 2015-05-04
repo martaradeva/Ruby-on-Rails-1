@@ -1,0 +1,6 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :name, label: 'Name of lecture', input_html: {value: @lecture.name || ''} %>
+  <%= f.input :description, as: :text, label: 'What is this lecture about?', input_html: {value: @lecture.description || ''} %>
+  <%= f.association :lectures, collection: Lecture.all , as: :select %>
+  <%= f.button :submit %>
+<% end %>

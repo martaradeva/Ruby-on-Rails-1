@@ -8,6 +8,7 @@
 </head>
 <body>
   <header>
+    <h1><%= content_for?(:description) ? yield(:description) : "A nice page you have here." %></h1>
     <%= render 'layouts/navigation' %>
   </header>
   <main role="main">

@@ -4,6 +4,7 @@ class LecturesController < ApplicationController
   end
 
   def new
+    @lecture = Lecture.new
   end
 
   def show
@@ -20,7 +21,7 @@ class LecturesController < ApplicationController
   end
 
   def update
-    set_lecture
+    create_lecture_from_params
     @lecture.update!
   end
 
@@ -38,5 +39,12 @@ private
 
   def set_lecture
     @lecture = Lecture.find(params['id'])
+  end
+
+  def create_lecture_from_params
+    @lecture = set_lecture || Lecture.new
+    @lecture.name = params('name')
+    @lecture.body = params('body')
+    @lecture
   end
 end

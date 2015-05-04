@@ -4,5 +4,5 @@
   <div class="textarea"><%= t.description %></div>
   <div class="timestamps"><%= t.created_at %></div>
   <div class="timestamps"><%= t.updated_at %></div>
-  <div class="actions"><%= render 'actions', :locals => {:task => t} %></div>
+  <div class="actions"><%= render 'tasks/actions', :locals => {:task => t} %></div>
 </div>

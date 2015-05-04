@@ -1,0 +1,28 @@
+@import 'variables';
+
+body{
+  font: 100% $font-stack;
+  header{
+    background-color: $header-background-color;
+    h1{
+      font-size: $header-font-size;
+      color: $header-font-color;
+    }
+    h2{
+      font-size: $h2-font-size;
+      color: $header-font-color;
+    }
+  }
+  main{
+    font-size: $body-font-color;
+    color: $body-font-color;
+    .item{
+      border: groove;
+      padding: 5px;
+      display: inline-block;
+      width: 30%;
+      background-color: $item-background-color;
+
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <h1><%= @lecture.name %></h1>
 <p><%= @lecture.body %></p>
-<ul><% @lecture.tasks.each do |t| %>
-  <li><%= render 'tasks/item', :locals => {:task => t} %></li>
-  <% end %>
-</ul>
+<% @lecture.tasks.each do |t| %>
+  <%= render 'tasks/item', :locals => {:task => t} %>
+<% end %>
+

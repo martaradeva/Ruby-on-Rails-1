@@ -1,6 +1,5 @@
 <h1><%= @task.name %></h1>
 <p><%= @task.description %></p>
-<ul><% @task.solutions.each do |s| %>
-  <li><%= render 'solutions/item', :locals => {:solution => s} %></li>
-  <% end %>
-</ul>
+<% @task.solutions.each do |s| %>
+  <%= render 'solutions/item', :locals => {:solution => s} %>
+<% end %>

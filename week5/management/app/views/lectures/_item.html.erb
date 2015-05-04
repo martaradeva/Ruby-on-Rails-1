@@ -1,10 +1,8 @@
 <% l = locals[:lecture] %>
-  <div>
-    <div><%= l.name %></div>
-    <div><%= l.body %></div>
-    <div><%= l.created_at %></div>
-    <div><%= l.updated_at %></div>
-    <div>
-      <%= render 'lectures/actions', :locals => {:lecture => l} %>
-    </div>
+  <div class="item">
+    <div class="heading"><%= l.name %></div>
+    <div class="textarea"><%= l.body %></div>
+    <div class="timestamps"><%= l.created_at %></div>
+    <div class="timestamps"><%= l.updated_at %></div>
+    <div class="actions"><%= render 'lectures/actions', :locals => {:lecture => l} %></div>
   </div>

@@ -16,13 +16,15 @@ class LecturesController < ApplicationController
   end
 
   def create
-    set_lecture
+    create_lecture_from_params
     @lecture.save!
+    redirect_to lecture_url(@lecture)
   end
 
   def update
-    create_lecture_from_params
-    @lecture.update!
+    set_lecture
+    @lecture.update!(params[:lecture].permit(:name, :body))
+    redirect_to lecture_url(@lecture)
   end
 
   def destroy
@@ -38,13 +40,13 @@ private
   end
 
   def set_lecture
-    @lecture = Lecture.find(params['id'])
+    @lecture = Lecture.find_by(id: params['id'])
   end
 
   def create_lecture_from_params
     @lecture = set_lecture || Lecture.new
-    @lecture.name = params('name')
-    @lecture.body = params('body')
+    @lecture.name = params["lecture"]['name']
+    @lecture.body = params["lecture"]['body']
     @lecture
   end
 end

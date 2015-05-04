@@ -1,4 +1,4 @@
 <% task = locals[:task] %>
-<%= link_to "Show", lecture_task_path(task.lecture, task) %>
-<%= link_to "Edit", edit_lecture_task_path(task.lecture, task) %>
+<%= link_to "Show", lecture_task_path(task.lecture, task), class: "btn" %>
+<%= link_to "Edit", edit_lecture_task_path(task.lecture, task), class: "btn" %>
 <%= button_to "Delete", [task.lecture, task], method: :delete, data: {confirm: "Are you sure?"} %>

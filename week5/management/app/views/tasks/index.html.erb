@@ -2,15 +2,6 @@
 <% content_for :description do %>Index page of all tasks for lecture <%= params["lecture_id"] %>.<% end %>
 
 <h1>Tasks</h1>
-<table>
-  <tr>
-    <td>Name</td>
-    <td>Description</td>
-    <td>Created at</td>
-    <td>Last modified</td>
-    <td>Actions</td>
-  </tr>
   <% @tasks.each do |t| %>
-    <%= render 'item_row', :locals => {:task => t} %>
+    <%= render 'item', :locals => {:task => t} %>
   <% end %>
-</table>

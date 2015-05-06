@@ -1,8 +1,6 @@
 <h1>Tweets:</h1>
 <p>
   <% @tweets.each do |t| %>
-    <h3><%= t.attrs[:user][:name] %></h3>
-    <p><%= t.created_at %></p>
-    <p><%= t.full_text %></p>
+    <%= render 'item', :locals => {:tweet => t} %>
   <% end %>
 </p>

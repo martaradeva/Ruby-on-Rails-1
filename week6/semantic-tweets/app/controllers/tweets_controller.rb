@@ -1,11 +1,11 @@
 class TweetsController < ApplicationController
   def index
     @tweets = get_tweets
+    p @tweets.first.full_text
   end
 
   private
   def get_tweets
-    "tweets"
-    # $twitter.home_timeline
+    $twitter.home_timeline
   end
 end

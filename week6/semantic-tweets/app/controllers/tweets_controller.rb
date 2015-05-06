@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
 
   private
   def get_tweets
-    $twitter.home_timeline
+    "tweets"
+    # $twitter.home_timeline
   end
 end

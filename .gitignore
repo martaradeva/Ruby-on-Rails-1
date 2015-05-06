@@ -59,4 +59,5 @@ bower.json
 /week6/semantic-tweets/.gitignore
 /week6/semantic-tweets/config/secrets.yml
 /week6/semantic-tweets/config/initializers/twitter.rb
+/week6/semantic-tweets/config/initializers/semantria.rb
 /week6/semantic-tweets/todo.txt

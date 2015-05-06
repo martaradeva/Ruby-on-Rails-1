@@ -54,3 +54,8 @@ bower.json
 /week5/management/config/secrets.yml
 /week5/management/todo.txt
 
+# ignore app specific data for week 6
+/week6/semantic-tweets/config/database.yml
+/week6/semantic-tweets/.gitignore
+/week6/semantic-tweets/config/secrets.yml
+/week6/semantic-tweets/todo.txt

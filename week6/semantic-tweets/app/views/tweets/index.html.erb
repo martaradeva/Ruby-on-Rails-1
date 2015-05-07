@@ -1,6 +1,16 @@
-<h1>Tweets:</h1>
-<p>
-  <% @tweets.each do |t| %>
-    <%= render 'tweet', :locals => {:tweet => t} %>
-  <% end %>
-</p>
+<div class="column">
+  <h1>Tweets:</h1>
+  <div>
+    <% @tweets.each do |t| %>
+      <%= render 'tweet', :locals => {:tweet => t} %>
+    <% end %>
+  </div>
+</div>
+<div class="column">
+  <h1>Positive tweets:</h1>
+  <div>
+    <% @positive_tweets.each do |t| %>
+      <%= render 'tweet', :locals => {:tweet => t} %>
+    <% end %>
+  </div>
+</div>

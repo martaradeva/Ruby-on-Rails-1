@@ -1,4 +1,5 @@
-# $semantria = Semantria::Client.new do |config|
-#   config.consumer_key = "consumer-key"
-#   config.consumer_ssecret = "consumer-secret"
-# end
+# require 'semantria'
+
+# consumer_key = ENV['CONSUMER_KEY']
+# consumer_secret =  ENV['CONSUMER_SECRET']
+# $session = Semantria::Session.new(consumer_key, consumer_secret)

@@ -175,7 +175,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  semantria_sdk (~> 3.8.79)
+  semantria_sdk
   sqlite3
   therubyracer
   turbolinks

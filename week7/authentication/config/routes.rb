@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'login' => 'users#login'
+  # root 'login' => 'users#login'
 
   get 'login' => 'users#login'
   post 'login' => 'users#authenticate'

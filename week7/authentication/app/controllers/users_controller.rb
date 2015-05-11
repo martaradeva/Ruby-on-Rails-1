@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user, only: [:login, :authenticate]
 
   def login
     # render login form
@@ -22,12 +23,16 @@ class UsersController < ApplicationController
   end
 
   def new
+
     # render form for new user
     # validate user input
     # crypt password with bcrypt
   end
 
   def create
+    @user = User.new(params[:user])
+    @user.password = params[:password]
+    @user.save!
     # create a new user
     # pass a notice
     # then, redirect to user login
@@ -48,4 +53,5 @@ class UsersController < ApplicationController
   def delete
     # to write later
   end
+
 end

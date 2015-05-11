@@ -61,3 +61,9 @@ bower.json
 /week6/semantic-tweets/config/initializers/twitter.rb
 /week6/semantic-tweets/config/initializers/semantria.rb
 /week6/semantic-tweets/todo.txt
+
+# ignore app specific data for week 7
+/week6/authentication/config/database.yml
+/week6/authentication/.gitignore
+/week6/authentication/config/secrets.yml
+/week6/authentication/todo.txt

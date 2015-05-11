@@ -8,5 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     # authenticate user
+    p "lalala"
   end
+
 end

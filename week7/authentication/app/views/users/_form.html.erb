@@ -1,0 +1,7 @@
+<% simple_form_for @user do %>
+  <%= f.input :first_name, label: 'First name:', input_html: {value: @user.first_name || ''} %>
+  <%= f.input :last_name, label: 'Last name:', input_html: {value: @user.last_name || ''} %>
+  <%= f.input :email, label: 'Email:', input_html: {value: @user.email || ''} %>
+  <%= f.input :password, label: 'Password:', input_html: {value: @user.password || ''} %>
+  <%= f.button :submit %>
+<% end %>

@@ -3,6 +3,7 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   # users.password_hash in the database is a :string
   include BCrypt
+  has_secure_password
 
   validates :email, :first_name, :last_name, presence: true
   # validates :password, presence: true, length: { in: 6..32 }

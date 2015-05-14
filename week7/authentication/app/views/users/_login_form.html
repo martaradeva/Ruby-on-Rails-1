@@ -1,0 +1,5 @@
+<%= simple_form_for @user, url: "login" do |f| %>
+  <%= f.input :email, label: 'Email:', input_html: {value: @user.email || ''} %>
+  <%= f.input :password, label: 'Password:' %>
+  <%= f.button :submit, "#{action_name.titleize}" %>
+<% end %>

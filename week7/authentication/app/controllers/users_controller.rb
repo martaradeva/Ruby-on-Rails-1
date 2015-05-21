@@ -10,12 +10,14 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-    set_user
+    # p params
+    set_user_by_email
+    p @user.try(:authenticate, params[:user][:password])
     # @user = User.find_by_email(params[:user][:email])
-    if @user.password == params[:user][:password]
-      set_cookie
-    end
-      redirect_to 'show'
+    # if @user.password == params[:user][:password]
+    #   set_cookie
+    # end
+      redirect_to "/profile/#{@user.id}"
     # check if user with params exists
     # if it exists, create session cookie
     # send cookie and redirect to 'profile/user_id'
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    p @user.first_name
     # check for cookies
     # render a simple view with user credentials.
   end
@@ -85,12 +88,19 @@ private
   end
 
   def set_cookie
-    cookies[:login] = { value: "#{@user.id}", expires: 1.hour.from_now }
+    # cookies[:login] = { value: "#{@user.id}", expires: 1.hour.from_now }
   end
 
   def set_user
-    @user = User.find(params[:user][:id])
+    @user = User.find(params[:user_id])
+    p @user
     @notice = "You must be logged in to see this page."
     # check for cookie -> if not present, redirect to login with notice.
   end
+
+  def set_user_by_email
+    @user = User.find_by(email: params[:user][:email])
+    p @user
+  end
+
 end

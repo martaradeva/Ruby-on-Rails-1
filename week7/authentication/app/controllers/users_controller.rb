@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   def authenticate
     # p params
     set_user_by_email
-    p @user.try(:authenticate, params[:user][:password])
+    @user = @pseudo_user.try(:authenticate, params[:user][:password])
+    # if @pseudo_user.try(:authenticate, params[:user][:password])
+    #   then @user = _
+    # else 
     # @user = User.find_by_email(params[:user][:email])
     # if @user.password == params[:user][:password]
     #   set_cookie
@@ -84,7 +87,7 @@ private
   def authenticate_user
     # check if cookie is present
     # authenticate user
-    p "lalala"
+    # p "lalala"
   end
 
   def set_cookie
@@ -99,8 +102,8 @@ private
   end
 
   def set_user_by_email
-    @user = User.find_by(email: params[:user][:email])
-    p @user
+    @pseudo_user = User.find_by(email: params[:user][:email])
+    # p @user
   end
 
 end
